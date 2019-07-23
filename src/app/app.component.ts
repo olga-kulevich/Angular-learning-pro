@@ -1,28 +1,27 @@
 import {
-  Component,
-  ViewContainerRef,
-  ViewChild,
-  AfterContentInit,
-  ComponentFactoryResolver, ComponentRef, TemplateRef
+  Component
 } from '@angular/core';
-
-import { AuthFormComponent } from './auth-form/auth-form.component';
-
-import { User } from './auth-form/auth-form.interface';
 
 @Component({
   selector: 'app-root',
   template: `
     <div>
       <ng-container
-      [ngTemplateOutlet]="tmpl" >
+        [ngTemplateOutlet]="tmpl"
+        [ngTemplateOutletContext]="ctx"
+      >
       </ng-container>
+      
       <ng-template #tmpl let-name let-foo let-location="location">
-        Todd Motto
+        {{name}} : {{location}}
       </ng-template>
+      
     </div>
   `
 })
 export class AppComponent {
-
+  ctx = {
+    $implicit: 'Todd',
+    location: 'UK'
+  };
 }
