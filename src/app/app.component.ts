@@ -14,26 +14,15 @@ import { User } from './auth-form/auth-form.interface';
   selector: 'app-root',
   template: `
     <div>
-      <div #entry></div>
+      <ng-container
+      [ngTemplateOutlet]="tmpl" >
+      </ng-container>
       <ng-template #tmpl let-name let-foo let-location="location">
-        {{foo}}: {{location}}
+        Todd Motto
       </ng-template>
     </div>
   `
 })
-export class AppComponent implements AfterContentInit {
+export class AppComponent {
 
-  @ViewChild('entry', {static: true, read: ViewContainerRef }) entry: ViewContainerRef;
-  @ViewChild('tmpl', {static: true, read: TemplateRef}) tmpl: TemplateRef<any>;
-
-  component: ComponentRef<AuthFormComponent>;
-
-  constructor() {}
-
-  ngAfterContentInit() {
-    this.entry.createEmbeddedView(this.tmpl, {
-      $implicit: 'Motto Todd',
-      location: 'England, UK'
-    });
-  }
 }
