@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     <div>
       <label>
         Credit Card Number
-        <input 
+        <input
           name="credit-card" 
           type="text"
           placeholder="Enter your 16-digit card number"
